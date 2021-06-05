@@ -1,3 +1,5 @@
+Juja blog is a modern blog coded with React and Node Js.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
