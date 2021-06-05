@@ -1,0 +1,25 @@
+.my__container {
+  background-image: url("https://images.pexels.com/photos/1181325/pexels-photo-1181325.jpeg");
+  background-repeat: no-repeat;
+  width: 80%;
+  background-attachment: fixed;
+  height: 70vh;
+  object-fit: cover;
+  margin-top: 30px;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  padding: 30px;
+  justify-content: center;
+  box-shadow: 1px 2px 9px 3px black;
+}
+.my__container .form-control {
+  background-color: #111 !important;
+  height: 60px !important;
+}
+.my__container .form-control:focus{
+    outline:  none !important;
+    outline-color: transparent !important;
+    border-color: transparent !important;
+}

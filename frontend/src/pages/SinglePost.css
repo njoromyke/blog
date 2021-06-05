@@ -1,0 +1,57 @@
+.text__holder > img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.text__holder h2 {
+  text-align: center;
+  color: orangered;
+  margin-top: 10px;
+}
+.social__tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text__holder .social__icons {
+  margin: 10px;
+  display: flex;
+}
+.text__holder .edit__icons {
+  display: flex;
+  font-size: 20px;
+  justify-content: flex-end;
+}
+.edit__icons .fas {
+  margin: 10px;
+}
+.edit__icons .fa-trash {
+  color: white;
+  margin: 0px !important;
+}
+.edit__icons .fa-edit {
+  color: darkblue;
+  border-radius: 50%;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  box-shadow: 2px 3px 9px 3px #111;
+}
+.edit__icons .fa-plus-circle {
+  color: orangered;
+  border-radius: 50%;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  box-shadow: 2px 3px 9px 3px #111;
+}
+.text__area {
+  width: 100%;
+  color: white;
+  letter-spacing: 0.5px;
+  
+}

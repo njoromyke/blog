@@ -1,0 +1,136 @@
+.img__main {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 450px !important;
+  margin-top: 30px !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+  border-radius: 10px;
+}
+.main .category {
+  position: absolute;
+  top: 10%;
+  margin-left: 25px;
+  text-decoration: none !important;
+  color: white !important;
+  background-color: #f8633b;
+  border-radius: 25px;
+  padding: 0 5px;
+  font-weight: 300;
+}
+.main h2 {
+  position: absolute;
+  top: 65%;
+  text-align: left;
+  font-size: 23px;
+  color: white;
+  transition: all 0.4s ease-in;
+  margin-left: 20px;
+}
+@media (max-width: 576px) {
+  .main h2 {
+    position: absolute;
+    top: 65%;
+    text-align: left;
+    font-size: 15px;
+    color: white;
+    transition: all 0.4s ease-in;
+    margin-left: 20px;
+  }
+}
+
+
+.main h2:hover {
+  color: #f8633b;
+}
+.main .date__holder {
+  position: absolute;
+  font-size: 15px;
+  color: gray;
+  font-weight: 200;
+  top: 78%;
+  margin-left: 20px;
+  font-style: italic;
+}
+.main .para__area {
+  position: absolute;
+  top: 85%;
+  color: white;
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  text-align: left;
+  margin-left: 20px;
+}
+.side__row > img {
+  width: 100%;
+  object-fit: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+  border-radius: 10px;
+  height: 225px;
+}
+.side__row > span {
+  color: white;
+  cursor: pointer;
+  background-color: #f8633b;
+  padding: 0 5px;
+  border-radius: 25px;
+  top: 10%;
+  position: absolute;
+  margin-left: 10px;
+}
+.side__row h4 {
+  color: white;
+  font-weight: 400;
+  position: absolute;
+  top: 35%;
+  margin-left: 5px;
+  transition: all 0.4s ease-in;
+}
+.side__row h4:hover {
+  color: #f8633b;
+}
+.side__row .calendar__holder {
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  top: 40%;
+  margin-left: 5px;
+}
+.side__row2 > img {
+  width: 100%;
+  object-fit: cover;
+  height: 225px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+  border-radius: 10px;
+}
+.side__row2 > span {
+  cursor: pointer;
+  background-color: #f8633b;
+  padding: 0 5px;
+  top: 60%;
+  position: absolute;
+  color: white;
+  border-radius: 25px;
+  margin-left: 5px;
+}
+.side__row2 h4 {
+  color: white;
+  font-weight: 400;
+  position: absolute;
+  top: 80%;
+  margin-left: 5px;
+  transition: all 0.4s ease-in;
+}
+.side__row2 .calendar__holder2 {
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  top: 86%;
+  margin-left: 5px;
+}
+.side__row2 h4:hover {
+  color: #f8633b;
+}

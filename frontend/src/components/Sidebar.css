@@ -1,0 +1,81 @@
+.side__bar {
+  position: sticky;
+  top: 10%;
+  bottom: 70%;
+  margin-top: 30px;
+}
+.side__bar h4 {
+  color: #f8633b;
+  text-align: center;
+}
+.side__bar p {
+  color: white;
+}
+.side__bar .button__sub {
+  color: white !important;
+  border-color: #f8633b !important;
+}
+.side__bar .btn-outline-primary {
+  outline: none !important;
+  border-radius: 0 !important;
+}
+.side__bar .btn-outline-primary:hover,
+.btn-outline-primary:visited {
+  background-color: #f8633b !important;
+  border-color: none !important;
+}
+.side__bar .form__holder {
+  display: inline;
+  line-height: 80px;
+  align-items: center;
+  justify-content: center;
+}
+.side__bar .form__holder .form__input {
+  height: 40px !important;
+  background-color: #303336;
+  border: none !important;
+  border-radius: 0% !important;
+  color: white;
+}
+.form__input:focus {
+  outline: none !important;
+  border-radius: 0%;
+}
+.side__bar .tags {
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.side__bar h5 {
+  color: #f8633b !important;
+}
+.side__bar .tags span {
+  margin: 10px;
+  background-color: #1f2831;
+  padding: 5px 10px;
+  box-shadow: 2px 2px 8px 1px rgb(15, 14, 14);
+  cursor: pointer;
+}
+.import__holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.important__links .import__holder .link__img {
+  width: 100px !important;
+  object-fit: cover;
+  height: 100px;
+  border-radius: 10px;
+}
+.import__holder h5 {
+  color: white !important;
+  font-weight: 200;
+  margin-left: 3px;
+  width: 100%;
+  transition: all 0.4s ease-in;
+}
+.import__holder h5:hover {
+  color: #f8633b !important;
+}

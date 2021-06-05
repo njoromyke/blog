@@ -1,0 +1,68 @@
+.latest__section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+@media (max-width: 576px) {
+  .latest__section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+
+  .post__holder {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    justify-content: space-between;
+  }
+}
+
+.latest__section .latest__img {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+  border-radius: 10px;
+}
+.post__holder {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  justify-content: space-between;
+}
+.post__holder h3 {
+  transition: all 0.4s ease-in;
+  color: white;
+  font-weight: 300;
+  text-decoration: none;
+}
+.post__holder h3:hover {
+  text-decoration: dotted !important;
+  color: orangered;
+}
+
+.post__holder p {
+  color: white;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.post__holder .calendar__holder {
+  color: gray;
+  font-weight: 200;
+  font-style: italic;
+}
+.post__holder .button__sub{
+    color: white !important;
+    border-color: #f8633b !important;
+}
+.post__holder .btn-outline-primary:hover,.btn-outline-primary:visited{
+    background-color: #f8633b !important;
+    border-color: none !important;
+    outline: none !important;
+}

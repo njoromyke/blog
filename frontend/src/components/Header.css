@@ -1,0 +1,66 @@
+@media (min-width: 991.98px) {
+  .bg-color {
+    background-color: #11181f !important;
+    padding: 40px !important;
+    padding-right: 60px !important ;
+    text-transform: uppercase !important;
+  }
+}
+.my__header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.my__header .form__search {
+  padding-left: 30px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transform: skew(10deg);
+  border: transparent;
+  border-radius: 0%;
+  background-color: black;
+  color: white;
+  
+}
+.my__header .form__search:focus{
+    outline: none;
+
+}
+.my__header i.fas {
+  color: orangered;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -30px;
+  position: relative;
+  padding-right: 20px;
+}
+
+.bg-color {
+  background-color: #11181f !important;
+  text-transform: uppercase !important;
+  font-weight: 400;
+}
+.navbar__img {
+  width: 80px;
+  object-fit: cover;
+}
+.my__navBar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: inherit;
+}
+.my__navBar .my__link {
+  text-decoration: none !important;
+  transition: all 0.4s ease-in !important;
+  font-size: 14px !important;
+}
+.my__navBar .my__link a {
+  text-decoration: none !important;
+  transition: all 0.4s ease-in !important;
+}
+.my__navBar .my__link a:hover {
+  color: orangered !important;
+}

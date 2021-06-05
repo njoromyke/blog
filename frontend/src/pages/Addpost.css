@@ -1,0 +1,28 @@
+.form-control {
+  border-radius: 0% !important;
+  color: white !important;
+  background-color: rgba(171, 180, 171, 0.133) !important;
+  border-color: transparent !important;
+}
+.form-control:focus {
+  outline: none !important;
+  outline-color: transparent !important;
+}
+textarea.text__area {
+  height: 80vh !important;
+}
+.button__sub {
+  color: white !important;
+  border-color: #f8633b !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:visited {
+  background-color: #f8633b !important;
+  border-color: none !important;
+  outline: none !important;
+}
+
+.add__post h2 {
+    margin-top: 20px;
+  color: orangered;
+}
