@@ -13,6 +13,7 @@ const App = () => {
   return (
     <>
       <Router>
+        
         <Header />
         <Route exact path='/login' component={Login} />
         <Route exact path='/post/dd' component={EditPosts} />
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path='/posts' component={SinglePost} />
         <Route path='/' exact component={Home} />
         <Footer />
+        
       </Router>
     </>
   );
