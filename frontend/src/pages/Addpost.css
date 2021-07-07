@@ -21,6 +21,10 @@ textarea.text__area {
   border-color: none !important;
   outline: none !important;
 }
+.react-select__value-container{
+  width: 100% !important;
+  background-color: #111 !important;
+}
 
 .add__post h2 {
     margin-top: 20px;
