@@ -1,6 +1,7 @@
 import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 import {
   EmailIcon,
   FacebookIcon,
@@ -21,124 +22,116 @@ import {
 } from "react-share";
 import Post from "../components/Post";
 import "./SinglePost.css";
-const SinglePost = () => {
-  const url = "https://me.com";
-  const title = "title";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost, listPost } from "../actions/postsActions";
+import { toast } from "react-toastify";
+import Message from "../components/Message";
+import { POST_DELETE_RESET } from "../constants/postsContants";
+
+const SinglePost = ({ history, match }) => {
+  const dispatch = useDispatch();
+  const postsDetails = useSelector((state) => state.postsDetails);
+  const { loading, post, error } = postsDetails;
+  const postsDelete = useSelector((state) => state.postsDelete);
+  const { deleted, error: errorDelete } = postsDelete;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading: loadingLogin, userInfo, error: errorLogin } = userLogin;
+
+  const url = `http://localhost:5000/api/posts/${match.params.id}`;
+  useEffect(() => {
+    if (deleted) {
+      history.push("/");
+      dispatch({ type: POST_DELETE_RESET });
+    } else {
+      dispatch(listPost(match.params.id));
+    }
+  }, [dispatch, match, userInfo, history, deleted]);
+
   const deleteHandler = (id) => {
-    window.confirm("Do you want to delete this post?");
+    if (window.confirm("Do you want to delete this post?")) {
+      dispatch(deletePost(id));
+    }
   };
 
   return (
     <MDBContainer>
-      <MDBRow>
-        <MDBCol md={12}>
-          <div className='text__holder'>
-            <h2>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque,
-              ullam?{" "}
-            </h2>
-            <br />
-            <img
-              src='https://images.pexels.com/photos/459654/pexels-photo-459654.jpeg'
-              alt=''
-            />
-            <h2>Get Social</h2>
-            <div className='social__tab'>
-              <FacebookShareButton url={url} title={title}>
-                <FacebookIcon
-                  className='social__icons'
-                  size={32}
-                  round={true}
-                ></FacebookIcon>
-              </FacebookShareButton>
-              <TelegramShareButton url={url} title={title}>
-                <TelegramIcon
-                  className='social__icons'
-                  size={32}
-                  round={true}
-                ></TelegramIcon>
-              </TelegramShareButton>
-              <TwitterShareButton url={url} title={title}>
-                <TwitterIcon
-                  className='social__icons'
-                  size={32}
-                  round={true}
-                ></TwitterIcon>
-              </TwitterShareButton>
-              <LinkedinShareButton url={url} title={title}>
-                <LinkedinIcon
-                  className='social__icons'
-                  size={32}
-                  round={true}
-                ></LinkedinIcon>
-              </LinkedinShareButton>
-              <EmailShareButton url={url} title={title}>
-                <EmailIcon
-                  className='social__icons'
-                  size={32}
-                  round={true}
-                ></EmailIcon>
-              </EmailShareButton>
-            </div>
-            <div className='edit__icons'>
-              <button onClick={() => deleteHandler()} className='my btn'>
-                <i className='fas fa-trash'></i>
-              </button>
+      {deleted && toast("Post deleted successfully")}
 
-              <Link to='/posts/:id'>
-                <i class='fas fa-edit'></i>
-              </Link>
-              <Link to='/addpost'>
-                <i className='fas fa-plus-circle'></i>
-              </Link>
-            </div>
-            <div className='text__area'>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                laudantium voluptatem reiciendis incidunt. Ducimus, amet, a, id
-                dolorum iusto vel consequuntur est voluptatibus ipsum facere
-                autem nisi et natus temporibus? Quaerat fuga aspernatur quam
-                corporis nihil recusandae culpa esse suscipit repellat labore.
-                Doloremque architecto, libero delectus consequuntur mollitia
-                voluptas explicabo hic tenetur! Corporis, sunt optio vitae a
-                reiciendis, tempore dolorem, aut velit sed earum aperiam
-                quisquam itaque similique veniam excepturi cumque? Porro, neque
-                facere alias reiciendis reprehenderit delectus in repellat
-                quisquam ipsam ab et eum iure quasi rerum odit voluptates
-                blanditiis! Officiis, earum culpa laboriosam saepe recusandae
-                totam dolore quis minus ea dolorum ipsam provident veritatis
-                eaque magnam soluta tempora laudantium iusto, rem adipisci
-                exercitationem consequuntur sunt quod omnis harum. Explicabo
-                saepe suscipit distinctio tenetur p raesentium quaerat non
-                aspernatur? Earum, nostrum expedita mollitia architecto
-                similique, accusantium ratione vero, officiis blanditiis quasi
-                reprehenderit molestiae inventore debitis. Tempora totam error
-                dolorum at, sed aliquam! Facilis enim, molestiae sapiente natus
-                accusantium beatae mollitia earum similique suscipit eaque
-                voluptate necessitatibus voluptas dolore odio iste obcaecati id.
-                Quidem recusandae, iure temporibus minus perspiciatis maiores
-                soluta ratione esse sapiente repudiandae ex qui incidunt nemo?
-                Molestiae, repudiandae natus? Ipsam magnam et necessitatibus
-                corrupti esse at iusto porro dolor, enim quas laudantium?
-                Repellendus totam inventore, asperiores ullam ut corporis
-                molestiae doloribus rerum cupiditate, officia, quod rem atque
-                nulla quae repellat commodi laboriosam non magnam! Repellat
-                distinctio impedit molestiae, odit tempora, saepe pariatur at
-                obcaecati cumque, in veritatis libero incidunt. Minus soluta
-                iusto fugit enim impedit! Aperiam corrupti aliquid quod cum
-                voluptatibus facere error dolorum nihil nam, sequi explicabo in
-                totam eum ullam eligendi ipsa quas quibusdam dolorem eius
-                deserunt sunt porro. Temporibus architecto, culpa magni cumque
-                sunt quae ipsum repellendus eum esse doloremque qui libero
-                nulla, nihil facere!
-              </p>
-            </div>
-            <div className='more__posts'>
-              <Post />
-            </div>
-          </div>
-        </MDBCol>
-      </MDBRow>
+      {loading ? (
+        <Loader className=" d-flex justify-content-center align-items-center" />
+      ) : (
+        post && (
+          <MDBRow>
+            <MDBCol md={12}>
+              <div className="text__holder">
+                <h2> {post.title} </h2>
+                <br />
+                <img src={post.image} alt="" />
+                <h2>Get Social</h2>
+                <div className="social__tab">
+                  <FacebookShareButton url={url} title={post.title}>
+                    <FacebookIcon
+                      className="social__icons"
+                      size={32}
+                      round={true}
+                    ></FacebookIcon>
+                  </FacebookShareButton>
+                  <TelegramShareButton url={url} title={post.title}>
+                    <TelegramIcon
+                      className="social__icons"
+                      size={32}
+                      round={true}
+                    ></TelegramIcon>
+                  </TelegramShareButton>
+                  <TwitterShareButton url={url} title={post.title}>
+                    <TwitterIcon
+                      className="social__icons"
+                      size={32}
+                      round={true}
+                    ></TwitterIcon>
+                  </TwitterShareButton>
+                  <LinkedinShareButton url={url} title={post.title}>
+                    <LinkedinIcon
+                      className="social__icons"
+                      size={32}
+                      round={true}
+                    ></LinkedinIcon>
+                  </LinkedinShareButton>
+                  <EmailShareButton url={url} title={post.title}>
+                    <EmailIcon
+                      className="social__icons"
+                      size={32}
+                      round={true}
+                    ></EmailIcon>
+                  </EmailShareButton>
+                </div>
+                <div> {errorDelete && toast(errorDelete)}</div>
+                {userInfo && userInfo?.isAdmin && (
+                  <div className="edit__icons">
+                    <button
+                      onClick={() => deleteHandler(match.params.id)}
+                      className="my btn"
+                    >
+                      <i className="fas fa-trash"></i>
+                    </button>
+
+                    <Link to={`/posts/${match.params.id}`}>
+                      <i class="fas fa-edit"></i>
+                    </Link>
+                    <Link to="/addpost">
+                      <i className="fas fa-plus-circle"></i>
+                    </Link>
+                  </div>
+                )}
+                <div className="text__area">
+                  <p>{post.post}</p>
+                </div>
+                <div className="more__posts"></div>
+              </div>
+            </MDBCol>
+          </MDBRow>
+        )
+      )}
     </MDBContainer>
   );
 };

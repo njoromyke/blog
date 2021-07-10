@@ -59,8 +59,8 @@ const getPostById = AsyncHandler(async (req, res) => {
 //@route  GET /api/post/category
 //@access  public
 const getPostByCategory = AsyncHandler(async (req, res) => {
-  const myCategory = req.query.category
-   
+  const myCategory = req.query.category;
+
   const post = await Post.find({}).where("category").equals(myCategory);
   if (post) {
     res.status(201).json(post);
@@ -75,8 +75,6 @@ const getPostByCategory = AsyncHandler(async (req, res) => {
 //@access  public
 
 const updatePost = AsyncHandler(async (req, res) => {
-  const { title, image, category, post } = req.body;
-
   const postText = await Post.findById(req.params.id);
   if (postText) {
     post.title = req.body.title || post.title;
@@ -103,8 +101,9 @@ const deletePost = AsyncHandler(async (req, res) => {
   const post = await Post.findById(req.params.id);
   if (post) {
     await post.remove();
+    res.status(201).json(post);
   } else {
-    res.statuus(404);
+    res.status(404);
     throw new Error("Post not found");
   }
 });
