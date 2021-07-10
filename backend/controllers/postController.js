@@ -41,6 +41,14 @@ const getPosts = AsyncHandler(async (req, res) => {
   const posts = await Post.find({ ...keyword }).sort({ createdAt: -1 });
   res.status(201).json(posts);
 });
+//@desc get top post
+//@route  GET /api/posts/
+//@access  public
+const getTopPost = AsyncHandler(async (req, res, next) => {
+  const topPost = await Post.find({}).sort({ createdAt: -1 }).limit(1);
+
+  res.status(201).json(topPost);
+});
 
 //@desc get  post BY ID
 //@route  GET /api/post/:id
@@ -61,7 +69,38 @@ const getPostById = AsyncHandler(async (req, res) => {
 const getPostByCategory = AsyncHandler(async (req, res) => {
   const myCategory = req.query.category;
 
-  const post = await Post.find({}).where("category").equals(myCategory);
+  const post = await Post.findOne({}).where("category").equals(myCategory);
+  if (post) {
+    res.status(201).json(post);
+  } else {
+    res.status(404);
+
+    throw new Error("Post not found");
+  }
+});
+//@desc get  post by business category
+//@route  GET /api/post/category/business
+//@access  public
+const getPostByBusiness = AsyncHandler(async (req, res) => {
+  const post = await Post.find({ category: "business" })
+    .sort({ createdAt: -1 })
+    .limit(1);
+  if (post) {
+    res.status(201).json(post);
+  } else {
+    res.status(404);
+
+    throw new Error("Post not found");
+  }
+});
+//@desc get  post by trending category
+//@route  GET /api/post/category/trending
+//@access  public
+const getPostByTrending = AsyncHandler(async (req, res) => {
+  const post = await Post.find({ category: "trending" })
+    .sort({ createdAt: -1 })
+    .limit(1);
+
   if (post) {
     res.status(201).json(post);
   } else {
@@ -75,14 +114,14 @@ const getPostByCategory = AsyncHandler(async (req, res) => {
 //@access  public
 
 const updatePost = AsyncHandler(async (req, res) => {
-  const postText = await Post.findById(req.params.id);
-  if (postText) {
+  const post = await Post.findById(req.params.id);
+  if (post) {
     post.title = req.body.title || post.title;
     post.image = req.body.image || post.image;
     post.category = req.body.category || post.category;
     post.post = req.body.post || post.post;
   }
-  const updatedPost = await postText.save();
+  const updatedPost = await post.save();
   res.status(201).json({
     _id: updatedPost._id,
     title: updatedPost.title,
@@ -115,4 +154,7 @@ export {
   updatePost,
   deletePost,
   getPostByCategory,
+  getTopPost,
+  getPostByBusiness,
+  getPostByTrending,
 };

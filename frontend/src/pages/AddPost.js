@@ -14,6 +14,7 @@ import { createPost } from "../actions/postsActions";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { POST_CREATE_RESET } from "../constants/postsContants";
 
 const AddPost = ({ history }) => {
   const dispatch = useDispatch();
@@ -40,8 +41,12 @@ const AddPost = ({ history }) => {
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
+    } else {
+      if (success) {
+        dispatch({ type: POST_CREATE_RESET });
+      }
     }
-  }, [userInfo, history,error,success]);
+  }, [userInfo, history, error, success]);
 
   const onChangeInput = (value) => {
     setCategory(value.value);

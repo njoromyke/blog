@@ -35,7 +35,7 @@ const EditPosts = ({ history, match }) => {
   const [uploading, setUploading] = useState(false);
 
   const postsDetails = useSelector((state) => state.postsDetails);
-  const { post: posts } = postsDetails;
+  const { post: data } = postsDetails;
 
   const postUpdate = useSelector((state) => state.postUpdate);
   const { success: successUpdate, error: errorUpdate } = postUpdate;
@@ -48,21 +48,21 @@ const EditPosts = ({ history, match }) => {
       dispatch({
         type: POST_UPDATE_RESET,
       });
-      history.push(`/posts/${postId}`);
+      history.push(`/`);
     } else {
-      if (!posts.title || posts._id !== postId) {
+      if (!data.title || data._id !== postId) {
         dispatch(listPost(postId));
       } else {
-        setTitle(posts.title);
-        setImage(posts.image);
-        setCategory(posts.category);
-        setPost(posts.post);
+        setTitle(data.title);
+        setImage(data.image);
+        setCategory(data.category);
+        setPost(data.post);
       }
     }
     if (!userInfo) {
       history.push("/login");
     }
-  }, [userInfo, posts, dispatch, postId, successUpdate, history]);
+  }, [userInfo, data, dispatch, postId, successUpdate, history]);
 
   const onChangeInput = (value) => {
     setCategory(value.value);

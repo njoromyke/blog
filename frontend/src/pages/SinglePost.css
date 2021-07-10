@@ -2,6 +2,7 @@
   width: 100%;
   height: 400px;
   object-fit: cover;
+  
 }
 .text__holder h2 {
   text-align: center;
@@ -53,5 +54,4 @@
   width: 100%;
   color: white;
   letter-spacing: 0.5px;
-  
 }

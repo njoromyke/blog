@@ -3,9 +3,7 @@
   width: 100% !important;
   height: 450px !important;
   margin-top: 30px !important;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
-  border-radius: 10px;
-}
+  filter: brightness(0.6);}
 .main .category {
   position: absolute;
   top: 10%;
@@ -38,7 +36,6 @@
   }
 }
 
-
 .main h2:hover {
   color: #f8633b;
 }
@@ -51,24 +48,24 @@
   margin-left: 20px;
   font-style: italic;
 }
+
 .main .para__area {
   position: absolute;
   top: 85%;
-  color: white;
+  color: #fff;
   line-height: 24px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   -webkit-line-clamp: 2;
   text-align: left;
-  margin-left: 20px;
+  padding: 0 10px;
 }
 .side__row > img {
   width: 100%;
   object-fit: cover;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
-  border-radius: 10px;
+  filter: brightness(0.4);  border-radius: 10px;
   height: 225px;
 }
 .side__row > span {
@@ -103,8 +100,7 @@
   width: 100%;
   object-fit: cover;
   height: 225px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
-  border-radius: 10px;
+  filter: brightness(0.4);  border-radius: 10px;
 }
 .side__row2 > span {
   cursor: pointer;

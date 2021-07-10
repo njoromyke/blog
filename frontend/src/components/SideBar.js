@@ -1,33 +1,42 @@
 import { MDBBtn, MDBCol, MDBContainer } from "mdb-react-ui-kit";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./Sidebar.css";
+import { listTop } from "../actions/postsActions";
 const SideBar = () => {
+  const dispatch = useDispatch();
+  const postTop = useSelector((state) => state.postTop);
+  const { topPost, loading } = postTop;
+  useEffect(() => {
+    dispatch(listTop());
+  }, [dispatch]);
+
   return (
     <>
-      <div className='side__bar'>
+      <div className="side__bar">
         <h4>Juja Blog</h4>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           Exercitationem deserunt ipsum officia voluptatibus debitis? Ducimus
           repellat error enim excepturi amet.
         </p>
-        <div className='form__holder'>
+        <div className="form__holder">
           <form>
             <input
-              className='form__input'
-              type='text'
-              placeholder='Enter Email'
+              className="form__input"
+              type="text"
+              placeholder="Enter Email"
             />
-            <MDBBtn outline type='submit' className='button__sub'>
+            <MDBBtn outline type="submit" className="button__sub">
               SUBSCRIBE
             </MDBBtn>
           </form>
         </div>
         <br />
 
-        <h5 className='text-white text-center'>Tags for you</h5>
-        <div className='tags'>
+        <h5 className="text-white text-center">Tags for you</h5>
+        <div className="tags">
           <br />
           <span>sports</span>
           <span>Trending</span>
@@ -39,18 +48,20 @@ const SideBar = () => {
           <span>Business</span>
           <span>Creative</span>
         </div>
-        <div className='important__links'>
+        <div className="important__links">
           <h3>Latest Posts</h3>
-          <Link to='/'>
-            <div className='import__holder'>
+          {topPost.map((post)=>(
+            <Link to={`/post/${post._id}`}>
+            <div className="import__holder">
               <img
-                src='https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg'
-                alt=''
-                className='link__img'
+                src={post.image}
+                alt=""
+                className="link__img"
               />
-              <h5> Lorem ipsum dolor sit amet. </h5>
+              <h5> {post.title} </h5>
             </div>
           </Link>
+          ))}
         </div>
       </div>
     </>

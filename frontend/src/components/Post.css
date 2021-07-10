@@ -23,7 +23,9 @@
   width: 100%;
   object-fit: cover;
   height: 200px;
+  min-width: 300px;
   border-radius: 10px;
+  
 }
 .post__holder {
   display: flex;

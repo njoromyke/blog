@@ -1,4 +1,7 @@
 import {
+  POST_BUSINESS_FAIL,
+  POST_BUSINESS_REQUEST,
+  POST_BUSINESS_SUCCESS,
   POST_CREATE_FAIL,
   POST_CREATE_REQUEST,
   POST_CREATE_RESET,
@@ -13,6 +16,12 @@ import {
   POST_LIST_FAIL,
   POST_LIST_REQUEST,
   POST_LIST_SUCCESS,
+  POST_TOP_FAIL,
+  POST_TOP_REQUEST,
+  POST_TOP_SUCCESS,
+  POST_TRENDING_FAIL,
+  POST_TRENDING_REQUEST,
+  POST_TRENDING_SUCCESS,
   POST_UPDATE_FAIL,
   POST_UPDATE_REQUEST,
   POST_UPDATE_RESET,
@@ -26,6 +35,44 @@ export const postsListReducer = (state = { posts: [] }, action) => {
     case POST_LIST_SUCCESS:
       return { loading: false, posts: action.payload };
     case POST_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const postTopReducer = (state = { topPost: [] }, action) => {
+  switch (action.type) {
+    case POST_TOP_REQUEST:
+      return { loading: true, ...state };
+    case POST_TOP_SUCCESS:
+      return { loading: false, topPost: action.payload };
+    case POST_TOP_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const postBusinessReducer = (state = { bizPost: [] }, action) => {
+  switch (action.type) {
+    case POST_BUSINESS_REQUEST:
+      return { loading: true, ...state };
+    case POST_BUSINESS_SUCCESS:
+      return { loading: false, bizPost: action.payload };
+    case POST_BUSINESS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const postTrendingReducer = (state = { trendPost: [] }, action) => {
+  switch (action.type) {
+    case POST_TRENDING_REQUEST:
+      return { loading: true, ...state };
+    case POST_TRENDING_SUCCESS:
+      return { loading: false, trendPost: action.payload };
+    case POST_TRENDING_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
@@ -87,4 +134,3 @@ export const postUpdateReducer = (state = { post: {} }, action) => {
       return state;
   }
 };
-
