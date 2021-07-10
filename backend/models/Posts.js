@@ -5,6 +5,7 @@ const postSchema = mongoose.Schema(
     title: {
       type: String,
       required: true,
+      uppercase: true,
     },
     image: {
       type: String,

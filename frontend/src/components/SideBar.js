@@ -38,29 +38,40 @@ const SideBar = () => {
         <h5 className="text-white text-center">Tags for you</h5>
         <div className="tags">
           <br />
-          <span>sports</span>
-          <span>Trending</span>
-          <span>Latest</span>
-          <span>Fashion</span>
-          <span>Business</span>
-          <span>Lifestyle</span>
-          <span>Creative</span>
-          <span>Business</span>
-          <span>Creative</span>
+          <span>
+            {" "}
+            <Link to="/technology">Technology</Link>
+          </span>
+          <span>
+            {" "}
+            <Link to="/fashion">Fashion</Link>
+          </span>
+          <span>
+            {" "}
+            <Link to="/trending">Trending</Link>
+          </span>
+          <span>
+            <Link to="/business">Business</Link>
+          </span>
+          <span>
+            <Link to="/creative">Creative</Link>
+          </span>
+          <span>
+            <Link to="/lifestyle">Lifestyle</Link>
+          </span>
+          <span>
+            <Link to="/technology">Technology</Link>
+          </span>
         </div>
         <div className="important__links">
           <h3>Latest Posts</h3>
-          {topPost.map((post)=>(
+          {topPost.map((post) => (
             <Link to={`/post/${post._id}`}>
-            <div className="import__holder">
-              <img
-                src={post.image}
-                alt=""
-                className="link__img"
-              />
-              <h5> {post.title} </h5>
-            </div>
-          </Link>
+              <div className="import__holder">
+                <img src={post.image} alt="" className="link__img" />
+                <h5> {post.title} </h5>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

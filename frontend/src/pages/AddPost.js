@@ -44,6 +44,10 @@ const AddPost = ({ history }) => {
     } else {
       if (success) {
         dispatch({ type: POST_CREATE_RESET });
+      } else {
+        if (error) {
+          dispatch({ type: POST_CREATE_RESET });
+        }
       }
     }
   }, [userInfo, history, error, success]);

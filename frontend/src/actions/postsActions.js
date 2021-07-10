@@ -2,6 +2,9 @@ import {
   POST_BUSINESS_FAIL,
   POST_BUSINESS_REQUEST,
   POST_BUSINESS_SUCCESS,
+  POST_CATEGORY_FAIL,
+  POST_CATEGORY_REQUEST,
+  POST_CATEGORY_SUCCESS,
   POST_CREATE_FAIL,
   POST_CREATE_REQUEST,
   POST_CREATE_SUCCESS,
@@ -25,26 +28,28 @@ import {
   POST_UPDATE_SUCCESS,
 } from "../constants/postsContants";
 import axios from "axios";
-export const listPosts = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: POST_LIST_REQUEST,
-    });
-    const { data } = await axios.get(`/api/posts`);
-    dispatch({
-      type: POST_LIST_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: POST_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+export const listPosts =
+  (keyword = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: POST_LIST_REQUEST,
+      });
+      const { data } = await axios.get(`/api/posts?keyword=${keyword}`);
+      dispatch({
+        type: POST_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: POST_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 export const listTop = () => async (dispatch) => {
   try {
     dispatch({
@@ -65,7 +70,6 @@ export const listTop = () => async (dispatch) => {
     });
   }
 };
-
 
 export const listBiz = () => async (dispatch) => {
   try {
@@ -109,7 +113,6 @@ export const listTrend = () => async (dispatch) => {
   }
 };
 
-
 export const listPost = (id) => async (dispatch) => {
   try {
     dispatch({
@@ -130,6 +133,30 @@ export const listPost = (id) => async (dispatch) => {
     });
   }
 };
+export const listCat =
+  (category = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: POST_CATEGORY_REQUEST,
+      });
+      const { data } = await axios.get(
+        `/api/posts/categories?category=${category}`
+      );
+      dispatch({
+        type: POST_CATEGORY_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: POST_CATEGORY_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const deletePost = (id) => async (dispatch, getState) => {
   try {

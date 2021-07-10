@@ -3,6 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import {
   postBusinessReducer,
+  postCategoryReducer,
   postsCreateReducer,
   postsDeleteReducer,
   postsDetailsReducer,
@@ -23,6 +24,7 @@ const reducer = combineReducers({
   postTop: postTopReducer,
   postBusiness: postBusinessReducer,
   postTrending: postTrendingReducer,
+  postCategory: postCategoryReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

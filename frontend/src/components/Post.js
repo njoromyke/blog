@@ -4,20 +4,19 @@ import "./Post.css";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listPosts } from "../actions/postsActions";
-const Post = ({ history }) => {
+const Post = (props) => {
+  console.log(props);
+  
+
   const dispatch = useDispatch();
   const postsList = useSelector((state) => state.postsList);
 
   const { loading, posts, error } = postsList;
-  const url = "https://me.com";
 
   useEffect(() => {
     dispatch(listPosts());
   }, [dispatch]);
 
-  const submitHandler = (id) => {
-    history.push("/posts");
-  };
   return (
     <>
       {posts.map((post) => (

@@ -69,7 +69,9 @@ const getPostById = AsyncHandler(async (req, res) => {
 const getPostByCategory = AsyncHandler(async (req, res) => {
   const myCategory = req.query.category;
 
-  const post = await Post.findOne({}).where("category").equals(myCategory);
+  const post = await Post.find({})
+    .where("category")
+    .equals(myCategory);
   if (post) {
     res.status(201).json(post);
   } else {

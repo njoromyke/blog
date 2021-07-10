@@ -2,6 +2,9 @@ import {
   POST_BUSINESS_FAIL,
   POST_BUSINESS_REQUEST,
   POST_BUSINESS_SUCCESS,
+  POST_CATEGORY_FAIL,
+  POST_CATEGORY_REQUEST,
+  POST_CATEGORY_SUCCESS,
   POST_CREATE_FAIL,
   POST_CREATE_REQUEST,
   POST_CREATE_RESET,
@@ -53,6 +56,7 @@ export const postTopReducer = (state = { topPost: [] }, action) => {
       return state;
   }
 };
+
 export const postBusinessReducer = (state = { bizPost: [] }, action) => {
   switch (action.type) {
     case POST_BUSINESS_REQUEST:
@@ -60,6 +64,19 @@ export const postBusinessReducer = (state = { bizPost: [] }, action) => {
     case POST_BUSINESS_SUCCESS:
       return { loading: false, bizPost: action.payload };
     case POST_BUSINESS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const postCategoryReducer = (state = { catPosts: [] }, action) => {
+  switch (action.type) {
+    case POST_CATEGORY_REQUEST:
+      return { loading: true, ...state };
+    case POST_CATEGORY_SUCCESS:
+      return { loading: false, catPosts: action.payload };
+    case POST_CATEGORY_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
