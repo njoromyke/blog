@@ -30,6 +30,8 @@ const addPost = AsyncHandler(async (req, res) => {
 //@route  GET /api/posts/
 //@access  public
 const getPosts = AsyncHandler(async (req, res) => {
+  const pageSize = 5;
+  const page = Number(req.query.pageNumber) || 1;
   const keyword = req.query.keyword
     ? {
         title: {
@@ -38,8 +40,12 @@ const getPosts = AsyncHandler(async (req, res) => {
         },
       }
     : {};
-  const posts = await Post.find({ ...keyword }).sort({ createdAt: -1 });
-  res.status(201).json(posts);
+  const count = await Post.countDocuments({ ...keyword });
+  const posts = await Post.find({ ...keyword })
+    .sort({ createdAt: -1 })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.status(201).json({ posts, page, pages: Math.ceil(count / pageSize) });
 });
 //@desc get top post
 //@route  GET /api/posts/
@@ -69,9 +75,7 @@ const getPostById = AsyncHandler(async (req, res) => {
 const getPostByCategory = AsyncHandler(async (req, res) => {
   const myCategory = req.query.category;
 
-  const post = await Post.find({})
-    .where("category")
-    .equals(myCategory);
+  const post = await Post.find({}).where("category").equals(myCategory);
   if (post) {
     res.status(201).json(post);
   } else {

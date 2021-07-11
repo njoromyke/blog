@@ -1,5 +1,5 @@
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
@@ -16,13 +16,17 @@ import Creative from "./pages/Creative";
 import Fashion from "./pages/Fashion";
 import Lifestyle from "./pages/Lifestyle";
 import Business from "./pages/Business";
+import Switch from "react-bootstrap/esm/Switch";
+import Post from "./components/Post";
 
 const App = () => {
   return (
     <>
       <ToastContainer />
       <Router>
-        <Header />
+        <Route>
+          <Header />
+        </Route>
         <Route exact path="/login" component={Login} />
         <Route exact path="/addpost" component={AddPost} />
         <Route exact path="/technology" component={Technology} />
@@ -32,10 +36,11 @@ const App = () => {
         <Route exact path="/lifestyle" component={Lifestyle} />
         <Route exact path="/business" component={Business} />
         <Route exact path="/gossip" component={Gossip} />
-        <Route exact path="/search/:keyword" component={Home} />
         <Route exact path="/posts/:id" component={EditPosts} />
         <Route exact path="/post/:id" component={SinglePost} />
         <Route path="/" exact component={Home} />
+        <Route exact path="/search/:keyword" component={Home} />
+
         <Footer />
       </Router>
     </>

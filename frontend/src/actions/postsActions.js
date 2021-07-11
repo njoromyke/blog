@@ -29,13 +29,15 @@ import {
 } from "../constants/postsContants";
 import axios from "axios";
 export const listPosts =
-  (keyword = "") =>
+  (keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       dispatch({
         type: POST_LIST_REQUEST,
       });
-      const { data } = await axios.get(`/api/posts?keyword=${keyword}`);
+      const { data } = await axios.get(
+        `/api/posts?keyword=${keyword}&pageNumber=${pageNumber}`
+      );
       dispatch({
         type: POST_LIST_SUCCESS,
         payload: data,

@@ -18,9 +18,10 @@ import {
   MDBCollapse,
   MDBInput,
 } from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Header.css";
-const Header = ({ history }) => {
+const Header = () => {
+  const history = useHistory();
   const [showBasic, setShowBasic] = useState(false);
   const [keyword, setKeyword] = useState("");
 

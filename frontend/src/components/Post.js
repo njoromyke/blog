@@ -1,21 +1,19 @@
 import { useEffect } from "react";
 import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import "./Post.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listPosts } from "../actions/postsActions";
-const Post = (props) => {
-  console.log(props);
-  
-
+const Post = ({match}) => {
+  const keyword = match.params.keyword;
   const dispatch = useDispatch();
   const postsList = useSelector((state) => state.postsList);
 
   const { loading, posts, error } = postsList;
 
   useEffect(() => {
-    dispatch(listPosts());
-  }, [dispatch]);
+    dispatch(listPosts(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <>
